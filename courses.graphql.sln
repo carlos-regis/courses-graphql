@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Courses.GraphQL", "Courses.GraphQL\Courses.GraphQL.csproj", "{CB2DF0B7-AF63-405A-92EF-A60A50B10B45}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4845F0D9-5367-4E44-81B1-498BE7FD7570}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		Directory.Packages.props = Directory.Packages.props
+	EndProjectSection
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{F9A4DFD0-F59F-4831-90EA-F58E491E6F8C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CB2DF0B7-AF63-405A-92EF-A60A50B10B45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB2DF0B7-AF63-405A-92EF-A60A50B10B45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB2DF0B7-AF63-405A-92EF-A60A50B10B45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB2DF0B7-AF63-405A-92EF-A60A50B10B45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9A4DFD0-F59F-4831-90EA-F58E491E6F8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9A4DFD0-F59F-4831-90EA-F58E491E6F8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9A4DFD0-F59F-4831-90EA-F58E491E6F8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9A4DFD0-F59F-4831-90EA-F58E491E6F8C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {77BA49CC-5426-4089-A8AE-FD94E45FD829}
+	EndGlobalSection
+EndGlobal
