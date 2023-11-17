@@ -4,11 +4,11 @@
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
       "composeLaunchAction": "LaunchBrowser",
-      "composeLaunchServiceName": "webapil",
+      "composeLaunchServiceName": "web",
       "composeLaunchUrl": "{Scheme}://localhost:{ServicePort}/swagger",
       "serviceActions": {
-        "webapi": "StartDebugging",
-        "postgres": "StartWithoutDebugging",
+        "web": "StartDebugging",
+        "database": "StartWithoutDebugging",
         "pgadmin": "StartWithoutDebugging"
       }
     }

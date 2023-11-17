@@ -1,4 +1,5 @@
-﻿using Courses.GraphQL.Data.Models;
+﻿using Courses.GraphQL.Contracts;
+using Courses.GraphQL.Data.Models;
 
 namespace Courses.GraphQL.Data.Repositories;
 
@@ -10,28 +11,40 @@ public class CoursesRepository
     public IList<Course> GetAllCourses() => _context.Courses.ToList();
 
     public Course? GetCourseById(int id) => _context.Courses.FirstOrDefault(n => n.Id == id);
-    public Course AddCourse(Course course)
+    public Course AddCourse(UpsertCourseRequest upsertCourseRequest)
     {
+        ArgumentNullException.ThrowIfNull(upsertCourseRequest);
+
+        var course = new Course
+        {
+            Name = upsertCourseRequest.Name,
+            Description = upsertCourseRequest.Description,
+            Review = upsertCourseRequest.Review
+        };
+
+        course.Name = upsertCourseRequest.Name;
+        course.Description = upsertCourseRequest.Description;
+        course.Review = upsertCourseRequest.Review;
+
         _context.Courses.Add(course);
         _context.SaveChanges();
         return course;
     }
 
-    public Course UpdateCourse(int id, Course course)
+    public Course UpdateCourse(int id, UpsertCourseRequest upsertCourseRequest)
     {
-        ArgumentNullException.ThrowIfNull(course);
+        ArgumentNullException.ThrowIfNull(upsertCourseRequest);
 
-        var _course = _context.Courses.FirstOrDefault(n => n.Id == id);
+        var course = _context.Courses.FirstOrDefault(n => n.Id == id);
 
-        if (_course == null)
+        if (course is null)
         {
             return default!;
         }
 
-        _course.Name = course.Name;
-        _course.Description = course.Description;
-        _course.Review = course.Review;
-        _course.DateUpdated = DateTime.Now;
+        course.Name = upsertCourseRequest.Name;
+        course.Description = upsertCourseRequest.Description;
+        course.Review = upsertCourseRequest.Review;
 
         _context.SaveChanges();
 
@@ -42,7 +55,7 @@ public class CoursesRepository
     {
         var course = _context.Courses.FirstOrDefault(n => n.Id == id);
 
-        if (course == null)
+        if (course is null)
         {
             return;
         }

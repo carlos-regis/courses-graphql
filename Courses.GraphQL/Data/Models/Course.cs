@@ -1,14 +1,22 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Courses.GraphQL.Data.Models;
 
+[Table("course")]
 public class Course
 {
     [Key]
-    public int Id { get; set; }
-    public string Name { get; set; } = default!;
-    public string Description { get; set; } = default!;
-    public int Review { get; set; }
-    public DateTime DateAdded { get; set; }
-    public DateTime DateUpdated { get; set; }
+    [Column("id")]
+    public int Id { get; internal set; }
+    [Column("name")]
+    public string Name { get; internal set; } = default!;
+    [Column("description")]
+    public string Description { get; internal set; } = default!;
+    [Column("review")]
+    public int Review { get; internal set; }
+    [Column("date_added")]
+    public DateTime DateAdded { get; internal set; }
+    [Column("date_updated")]
+    public DateTime DateUpdated { get; internal set; }
 }

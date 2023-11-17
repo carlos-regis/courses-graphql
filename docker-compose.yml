@@ -1,37 +1,42 @@
-version: '3.4'
+version: "3.4"
 
 services:
-  webapi:
-    container_name: webapi-container
-    image: ${DOCKER_REGISTRY-}coursesgraphql
+  web:
+    container_name: web
+    image: ${DOCKER_REGISTRY-}web
     restart: always
     build:
       context: .
       dockerfile: Courses.GraphQL/Dockerfile
     depends_on:
-      - postgres
+      - database
 
-  postgres:
-    container_name: database-container
+  database:
+    container_name: database
     image: postgres:latest
     restart: always
     environment:
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: postgres
-        POSTGRES_DB: postgres
+        POSTGRES_DB: coursedb
     volumes:
       - ./.containers/database:/var/lib/postgresql/data
     ports:
       - 5432:5432
 
   pgadmin:
-    container_name: pgadmin-container
+    container_name: pgadmin
     image: dpage/pgadmin4
     restart: always
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@email.com
       PGADMIN_DEFAULT_PASSWORD: postgres
     depends_on:
-      - postgres
+      - database
     ports:
       - 5050:80
+    volumes:
+    - pgadmin-data:/var/lib/pgadmin
+
+volumes:
+    pgadmin-data:

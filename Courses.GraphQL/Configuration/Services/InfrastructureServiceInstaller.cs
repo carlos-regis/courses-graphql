@@ -10,8 +10,9 @@ public class InfrastructureServiceInstaller : IServiceInstaller
         IServiceCollection services,
         IConfiguration configuration)
     {
-        services.AddDbContext<AppDbContext>(options =>
-                    options.UseNpgsql(configuration.GetConnectionString("Database")));
+        services.AddDbContext<AppDbContext>(options => options
+                .UseNpgsql(configuration.GetConnectionString("PostgreSQL"))
+                .UseSnakeCaseNamingConvention());
         services.AddScoped<CoursesRepository>();
     }
 }

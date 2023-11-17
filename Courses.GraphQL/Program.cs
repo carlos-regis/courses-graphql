@@ -1,4 +1,5 @@
 using Courses.GraphQL.Configuration;
+using GraphQL.Server;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,7 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .InstallServices(
         builder.Configuration,
-        typeof(IServiceInstaller).Assembly);
+        typeof(IServiceInstaller).Assembly)
+    .AddGraphQL().AddSystemTextJson();
 
 builder.Host
     .UseSerilog((context, configuration) =>
@@ -18,13 +20,11 @@ var app = builder.Build();
 // Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
 {
-    app.ConfigureSwagger()
-       .UseDeveloperExceptionPage();
+    app.ConfigureSwagger();
 }
 else
 {
-    app.UseExceptionHandler("/Error")
-       .UseHsts();
+    app.UseHsts();
 }
 
 app.UseHttpsRedirection()

@@ -8,17 +8,21 @@
 	<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 	<DockerfileContext>.</DockerfileContext>
 	<UserSecretsId>b3860991-e704-4ecd-8e76-a0142bf55eb7</UserSecretsId>
-	<DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
+	<PackageReference Include="GraphQL" />
+	<PackageReference Include="Graphiql" />
+	<PackageReference Include="GraphQL.Server.Transports.AspNetCore" />
+	<PackageReference Include="GraphQL.Server.Transports.AspNetCore.SystemTextJson" />
+	<PackageReference Include="GraphQL.Server.Ui.GraphiQL" />
 	<PackageReference Include="Microsoft.EntityFrameworkCore" />
-	<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
-	<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
 	<PackageReference Include="Microsoft.EntityFrameworkCore.Tools">
 		<PrivateAssets>all</PrivateAssets>
 		<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	</PackageReference>
+	<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
+	<PackageReference Include="EFCore.NamingConventions" />
 	<PackageReference Include="Microsoft.AspNetCore.OpenApi" />
 	<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" />
 	<PackageReference Include="Serilog.AspNetCore" />

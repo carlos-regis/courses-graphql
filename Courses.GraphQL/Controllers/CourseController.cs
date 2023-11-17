@@ -1,4 +1,4 @@
-using Courses.GraphQL.Data.Models;
+using Courses.GraphQL.Contracts;
 using Courses.GraphQL.Data.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,11 +6,11 @@ namespace Courses.GraphQL.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class CoursesController : ControllerBase
+public class CourseController : ControllerBase
 {
     private readonly CoursesRepository _coursesRepository;
 
-    public CoursesController(CoursesRepository coursesRepository) => _coursesRepository = coursesRepository;
+    public CourseController(CoursesRepository coursesRepository) => _coursesRepository = coursesRepository;
 
     [HttpGet]
     public IActionResult GetAll()
@@ -27,16 +27,16 @@ public class CoursesController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult AddBook(Course course)
+    public IActionResult AddBook(UpsertCourseRequest upsertCourseRequest)
     {
-        var addedCourse = _coursesRepository.AddCourse(course);
+        var addedCourse = _coursesRepository.AddCourse(upsertCourseRequest);
         return Ok(addedCourse);
     }
 
     [HttpPut("{id}")]
-    public IActionResult Update(int id, Course course)
+    public IActionResult Update(int id, UpsertCourseRequest upsertCourseRequest)
     {
-        var updatedCourse = _coursesRepository.UpdateCourse(id, course);
+        var updatedCourse = _coursesRepository.UpdateCourse(id, upsertCourseRequest);
         return Ok(updatedCourse);
     }
 
